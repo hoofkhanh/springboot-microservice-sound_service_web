@@ -1,0 +1,70 @@
+.container {
+  .big-image {
+    position: relative;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      filter: brightness(70%);
+      vertical-align: middle;
+    }
+
+    .image-info {
+      position: absolute;
+      bottom: 30%;
+      left: 10%;
+      max-width: 700px;
+
+      
+
+      h1, div {
+        color: white;
+        margin: 20px 0;
+      }
+
+      h1 {
+        font-size: 50px;
+      }
+
+      div {
+        cursor: pointer;
+
+        button {
+          border-radius: 25px;
+          width: 50px;
+          height: 50px;
+          margin-right: 15px;
+          border: none;
+          transition: transform 0.25s;
+          cursor: pointer;
+          padding: 10px 14px;
+        }
+
+        span{
+          color: rgba(255, 255, 255, 0.63);
+          transition: color 0.25s;
+        }
+
+        &:hover button {
+          transform: scale(1.1);
+        }
+  
+        &:hover span {
+          color: white;
+        }
+
+      }
+    }
+  }
+}
+
+@media (min-width: 0) and (max-width: 1200px) {
+  .container {
+    .image-info {
+      div {
+        display: none;
+      }
+    }
+  }
+}

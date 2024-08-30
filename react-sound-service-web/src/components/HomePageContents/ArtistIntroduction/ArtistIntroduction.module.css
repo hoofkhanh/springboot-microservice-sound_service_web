@@ -1,0 +1,42 @@
+.container {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--border-bottom);
+
+  .container-introduction {
+    max-width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+
+    h1 {
+      font-size: 48px;
+    }
+
+    .change-text {
+      animation: fadeIn 4s;
+      height: 55px;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 21px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 0) and (max-width: 1200px) {
+  h1, p {
+    font-size: 20px !important;
+  }
+}

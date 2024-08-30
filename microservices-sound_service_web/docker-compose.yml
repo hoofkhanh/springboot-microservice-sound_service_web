@@ -1,0 +1,126 @@
+services:
+  postgres:
+    container_name: ms-sound_service_web-postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: hoofkhanh
+      POSTGRES_PASSWORD: hoofkhanh
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5431:5432
+    networks:
+      - ms-sound_service_web-net
+    restart: unless-stopped
+  
+  pgadmin:
+    container_name: ms-sound_service_web-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: hoofkhanh@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: hoofkhanh
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - 5050:80
+    networks:
+      - ms-sound_service_web-net
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    
+  mongodb:
+    container_name: ms-sound_service_web-mongodb
+    image: mongo
+    ports:
+      - 27016:27017
+    volumes:
+      - mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=hoofkhanh
+      - MONGO_INITDB_ROOT_PASSWORD=hoofkhanh
+    networks:
+      - ms-sound_service_web-net
+      
+  mongo-express:
+    container_name: ms-sound_service_web-mongo_express
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=hoofkhanh
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=hoofkhanh
+      - ME_CONFIG_BASICAUTH_USERNAME=hoofkhanh
+      - ME_CONFIG_BASICAUTH_PASSWORD=hoofkhanh
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    networks:
+      - ms-sound_service_web-net
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    
+  zookeeper:
+    container_name: ms-sound_service_web-zookeeper
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+    networks:
+      - ms-sound_service_web-net
+  
+  kafka:
+    container_name: ms-sound_service_web-kafka
+    image: confluentinc/cp-kafka:latest
+    environment:
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+    ports:
+      - 9092:9092
+    networks:
+      - ms-sound_service_web-net
+    depends_on:
+      - zookeeper
+      
+  mail-dev:
+    container_name: ms-sound_service_web-mail_dev
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+    networks:
+      - ms-sound_service_web-net
+      
+  keycloak:
+    container_name: keycloak-ms
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - 9098:8080
+    environment:
+      KEYCLOAK_ADMIN: hoofkhanh
+      KEYCLOAK_ADMIN_PASSWORD: hoofkhanh
+    volumes:
+        - keycloak:/opt/keycloak/data/
+    networks:
+      - ms-sound_service_web-net
+    command:
+      - "start-dev"
+      
+      
+networks:
+  ms-sound_service_web-net:
+    driver: bridge
+    
+volumes:
+  postgres:
+  pgadmin:
+  mongo:
+  keycloak:
+    

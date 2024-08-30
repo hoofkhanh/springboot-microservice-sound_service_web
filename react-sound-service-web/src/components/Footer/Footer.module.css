@@ -1,0 +1,90 @@
+.footer {
+  color: white;
+
+  .footer-1 {
+    padding: 96px 0;
+    text-align: center;
+    background-color: var(--background-color);
+
+    h1 {
+      font-size: 45px;
+    }
+
+    button {
+      padding: 20px 30px;
+      font-size: 17px;
+      font-weight: 600;
+      color: white;
+      background-color: var(--button-color);
+      border: none;
+      border-radius: 4px;
+      margin: 30px 0;
+      transition: filter 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(90%);
+      }
+    }
+  }
+
+  .footer-2{
+    padding: 96px 0;
+    background-color: rgb(23, 29, 52);
+    display: flex;
+    align-items: start;
+    padding-left: 200px;
+
+
+    .terms {
+      li{
+        a {
+          color: rgba(255, 255, 255, 0.63);
+        }
+      }
+    }
+
+    .signup, .terms {
+      a {
+        transition: color 0.2s;
+        
+        &:hover {
+          color: white;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      padding: 0 50px;
+
+      
+
+      li {
+        list-style: none;
+        padding: 5px 0;
+
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+      
+    }
+  }
+}
+
+@media (min-width: 0) and (max-width: 600px) {
+  .footer {
+    .footer-2 {
+      flex-direction: column !important;
+      font-size: 14px !important;
+      padding-left: 90px !important;
+      justify-content: center !important;
+    }    
+  }
+}

@@ -1,0 +1,72 @@
+spring: 
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            
+      
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**
+        - id: artist-service
+          uri: lb://ARTIST-SERVICE
+          predicates:
+            - Path=/api/artists/**
+        - id: customer-service
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/api/customers/**
+        - id: job-service
+          uri: lb://JOB-SERVICE
+          predicates:
+            - Path=/api/jobs/**
+        - id: beat-service
+          uri: lb://BEAT-SERVICE
+          predicates:
+            - Path=/api/beats/**
+        - id: purchased-beat-service
+          uri: lb://PURCHASEDBEAT-SERVICE
+          predicates:
+            - Path=/api/purchased-beats/**
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/api/payments/**
+        - id: hire-service
+          uri: lb://HIRE-SERVICE
+          predicates:
+            - Path=/api/hires/**
+        - id: favorite-service
+          uri: lb://FAVORITE-SERVICE
+          predicates:
+            - Path=/api/favorites/**
+        - id: review-service
+          uri: lb://REVIEW-SERVICE
+          predicates:
+            - Path=/api/reviews/**
+        - id: notification-service
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+            - Path=/api/notifications/**
+        - id: conversation-service
+          uri: lb://CONVERSATION-SERVICE
+          predicates:
+            - Path=/api/conversations/**
+server:
+  port: 8222

@@ -1,0 +1,112 @@
+.signup {
+  background-color: rgb(250, 250, 250);
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+
+    .form {
+      border: 2px solid rgba(212, 207, 207, 0.658);
+      border-radius: 5px;
+      padding: 10px 25px;
+      width: 500px;
+
+      .signup-form {
+        .radio {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+
+          label {
+            flex: 1;
+          }
+          
+          div {
+            flex: 1;
+            input {
+              width: 10px !important;
+            }
+          }
+
+         
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .files {
+            text-align: center;
+          }
+
+          input[type='file'] {
+            display: none;
+          }
+
+          .labelFile {
+            text-decoration: underline;
+          }
+
+
+          input, textarea, select {
+            margin: 10px 0;
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid rgba(0, 0, 0, 0.282);
+            background-color: rgb(250, 250, 250);
+            border-radius: 2px;
+            flex: 1;
+    
+            &:focus {
+              outline: 1px solid var(--button-color);
+            }
+    
+            &:hover {
+              outline: 1px solid var(--button-color);
+            }
+          }
+          
+
+          button {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 16px;
+            padding: 20px 25px;
+            border: none;
+            background-color: var(--button-color);
+            color: white;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: filter 0.2s;
+            cursor: pointer;
+
+            &:hover {
+              filter: brightness(1.1);
+            }
+    
+            &:active {
+              filter: brightness(1);
+            }
+          }
+        }
+      }
+
+      .otherOption {
+        margin-top: 20px;
+        font-size: 14px;
+        text-align: center;
+        
+        p {
+          margin-bottom: 7px;
+        }
+
+        a {
+          color: gray;
+        }
+      }
+    }
+  }
+}

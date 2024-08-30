@@ -1,0 +1,344 @@
+.artist {
+
+  position: relative;
+
+  .contact {
+    display: flex;
+    align-items: center;
+    padding: 20px 161px;
+    border-bottom: 1px solid var(--border-bottom);
+    border-top: 1px solid var(--border-bottom);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background-color: white;
+
+    .favorite {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      span {
+        color: gray;
+        margin-left: 5px;
+      }
+
+      img {
+        width: 20px;
+      }
+    }
+
+    .contact-button {
+      color: white;
+      text-decoration: none;
+      background-color: var(--button-color);
+      padding: 15px 25px;
+      font-weight: 600;
+      border-radius: 5px;
+      margin-left: 50px;
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(90%);
+      }
+    }
+  }
+
+  .container-artist-info {
+    display: flex;
+    margin-top: 60px;
+
+    .left{
+      flex: 4;
+      padding-right: 200px;
+
+      .introduction {
+        p {
+          margin-bottom: 30px;
+          line-height: 22px;
+        }
+        
+        border-bottom: 1px solid var(--border-bottom);
+      }
+
+      .reviews {
+        border-top: 1px solid var(--border-bottom);
+        margin-top: 50px;
+        padding: 20px 0;
+
+        .form {
+          display: flex;
+          align-items: center;
+
+          margin-top: 10px;
+          textarea {
+            padding: 10px 20px;
+          }
+
+          button {
+            width: 20%;
+            margin-left: 20px;
+            border-radius: 0;
+            margin: 0;
+            margin-left: 20px;
+            transition: transform 0.2s;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        button {
+          width: 100%;
+          padding: 10px 0;
+          background-color: white;
+          border: 1px solid rgb(205, 199, 199);
+          border-radius: 5px;
+          font-size: 16px;
+          margin-top: 20px;
+        }
+
+        h1 {
+          color: gray;
+        }
+
+        .review-card {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          border: 1px solid rgba(170, 176, 178, 0.8);
+          padding: 13px 18px;
+          border-radius: 5px;
+          margin-top: 20px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.082);
+
+          .review-top {
+            display: flex;
+            align-items: center;
+
+            .avatar-right {
+              margin-left: 20px;
+              color: gray;
+
+              div {
+                margin-bottom: 5px;
+              }
+
+              a {
+                color: rgb(203, 200, 200);
+                text-decoration: none;
+              }
+
+              .stars {
+                img {
+                  width: 15px;  
+                  margin: 0 2px;
+                }
+              }
+            }
+
+            .avatar {
+              img {
+                width: 50px;
+                border-radius: 5px;
+                object-fit: cover;
+              }
+            }
+
+            
+          }
+
+          .review-bottom {
+            margin-top: 20px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+
+      .card {
+        border: 1px solid rgb(192, 184, 184);
+        width: 300px;
+        padding: 15px 30px;
+        margin-bottom: 30px;
+
+        .container-music {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+
+          .button-play {
+            cursor: pointer;
+            border: 2px solid black;
+            width: fit-content;
+            border-radius: 100px;
+            padding: 22px 25px;
+            margin-right: 20px;
+            transition: transform 0.2s;
+  
+            img {
+              vertical-align: middle;
+              width: 16px;
+              height: 20px;
+            }
+  
+            &:hover {
+              transform: scale(1.02);
+            }
+          }
+
+        }
+
+        h4 {
+          margin-top: 20px;
+        }
+
+        .skill {
+          margin: 10px 0;
+
+          .price {
+            color: gray;
+            font-size: 14px;
+            margin-top: 5px;
+          }
+        }
+
+        .title {
+          color: gray;
+          margin-bottom: 20px;
+        }
+
+        .content {
+          font-size: 14px;
+          color: gray;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .hire {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 100;
+
+    form {
+      background-color: white;
+      padding: 30px;
+      width: 660px;
+      border: 1px solid gray;
+      overflow: auto;
+      position: relative;
+      border-radius: 5px;
+      animation: appear 0.7s;
+
+
+
+      .out {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color: gray;
+        cursor: pointer;
+        font-size: 25px;
+      }
+
+      .row {
+        margin-bottom: 20px;
+
+        label {
+          font-size: 25px;
+          font-weight: 500;
+          margin-bottom: 10px;
+          display: block;
+        }
+
+        input, textarea, button, select {
+          width: 100%;
+          padding: 15px 20px;
+          border-radius: 3px;
+          background-color: rgb(250, 250, 250);
+          border: 1px solid rgba(0, 0, 0, 0.282);
+
+          &:not(button):focus {
+            outline: 1px solid var(--button-color);
+          }
+
+          &:not(button):hover {
+            outline: 1px solid var(--button-color);
+          }
+        }
+       
+        textarea {
+          height: 150px;
+        }
+
+        input[type='file'] {
+          display: none;
+        }
+
+        .label-file {
+          background-color: rgba(175, 168, 168, 0.748);
+          color: black;
+          padding: 10px 0;
+          text-align: center;
+          border-radius: 3px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+
+          &:hover {
+            background-color: rgb(164, 161, 161);
+          }
+        }
+
+        button {
+          background-color: var(--button-color);
+          color: white;
+          font-weight: 500;
+          font-size: 17px;
+          cursor: pointer;
+          transition:  filter 0.2s;
+          border: none;
+
+          &:hover {
+            filter: brightness(0.9);
+          }
+        }
+       
+      }
+    }
+  }
+}
+
+@media (min-width: 0) and (max-width: 1200px) {
+  .container-artist-info {
+
+    .left {
+      padding: 30px !important;
+
+      .review-top {
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+    }
+
+    .right {
+      flex-wrap: 0 !important;
+    }
+  }
+}
+

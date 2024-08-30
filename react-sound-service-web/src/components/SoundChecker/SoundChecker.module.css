@@ -1,0 +1,241 @@
+.soundChecker {
+  margin-top: 50px;
+
+  .info {
+    display: flex;
+    border-bottom: 1px solid var(--border-bottom);
+    padding-bottom: 40px;
+
+    .left {
+      flex: 1;
+
+      .about {
+        margin-bottom: 25px;
+
+        h3 {
+          margin-bottom: 10px;
+          color: rgb(42, 40, 40);
+        }
+
+        p {
+          color: rgb(38, 36, 36);
+          line-height: 22px;
+        }
+      }
+
+      .expect {
+        h3 {
+          margin-bottom: 10px;
+          color: rgb(42, 40, 40);
+        }
+
+        p {
+          color: rgb(38, 36, 36);
+          line-height: 22px;
+        }
+      }
+    }
+
+    .right {
+      flex: 0.7;
+      margin-left: 70px;
+
+      .card {
+        text-align: center;
+        padding: 10px 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        border: none;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        transition: box-shadow 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .price {
+          border-right: 1px solid var(--border-bottom);
+          padding: 5px 10px;
+          flex: 3;
+        }
+
+        .cost {
+          font-weight: 500;
+          font-size: 25px;
+          flex: 2;
+        }
+
+        h3 {
+          color: gray;
+          margin-bottom: 30px;
+          font-size: 15px;
+          font-weight: 500;
+        }
+
+        p {
+          color: rgb(38, 36, 36);
+        }
+      }
+    }
+  }
+
+  
+  
+  .benefit {
+    margin: 40px 0;
+    .title {
+      margin-bottom: 30px;
+      color: black;
+    }
+
+     p{
+      color: gray;
+      font-size: 14px;
+      line-height: 22px;
+     }
+  }
+
+  .hire {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+
+    form {
+      background-color: white;
+      padding: 30px;
+      width: 660px;
+      border: 1px solid gray;
+      overflow: auto;
+      position: relative;
+      border-radius: 5px;
+      animation: appear 0.7s;
+
+
+
+      .out {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color: gray;
+        cursor: pointer;
+        font-size: 25px;
+      }
+
+      .row {
+        margin-bottom: 20px;
+
+        label {
+          font-size: 25px;
+          font-weight: 500;
+          margin-bottom: 10px;
+          display: block;
+        }
+
+        input, textarea, button, select {
+          width: 100%;
+          padding: 15px 20px;
+          border-radius: 3px;
+          background-color: rgb(250, 250, 250);
+          border: 1px solid rgba(0, 0, 0, 0.282);
+
+          &:not(button):focus {
+            outline: 1px solid var(--button-color);
+          }
+
+          &:not(button):hover {
+            outline: 1px solid var(--button-color);
+          }
+        }
+       
+        textarea {
+          height: 150px;
+        }
+
+        input[type='file'] {
+          display: none;
+        }
+
+        .label-file {
+          background-color: rgba(175, 168, 168, 0.748);
+          color: black;
+          padding: 10px 0;
+          text-align: center;
+          border-radius: 3px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+
+          &:hover {
+            background-color: rgb(164, 161, 161);
+          }
+        }
+
+        button {
+          background-color: var(--button-color);
+          color: white;
+          font-weight: 500;
+          font-size: 17px;
+          cursor: pointer;
+          transition:  filter 0.2s;
+          border: none;
+
+          &:hover {
+            filter: brightness(0.9);
+          }
+        }
+       
+      }
+    }
+  }
+
+  .review {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      margin-top: 40px;
+      button {
+        padding: 10px 15px;
+      }
+    }
+    
+    .form {
+      display: flex;
+      align-items: center;
+
+      margin-top: 20px;
+      textarea {
+        padding: 10px 20px;
+      }
+
+      button {
+        margin-left: 20px;
+        border-radius: 0;
+        margin: 0;
+        margin-left: 20px;
+        transition: transform 0.2s;
+        padding: 10px 20px;
+        background-color: white;
+        border: 1px solid rgb(205, 199, 199);
+        font-size: 16px;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+  
+}

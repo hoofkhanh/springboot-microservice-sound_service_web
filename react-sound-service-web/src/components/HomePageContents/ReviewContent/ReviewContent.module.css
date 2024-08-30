@@ -1,0 +1,149 @@
+.container {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--border-bottom);
+
+  .container-review {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-size: 45px;
+      margin: 20px 0;
+    }
+
+    .text {
+      font-size: 20px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 80px auto;
+      z-index: 0;
+
+      .next:hover {
+        transform: scale(1.2);
+      }
+
+      .prev:hover {
+        transform: scale(1.2);
+      }
+      
+      .button {
+        width: 40px;
+        cursor: pointer;
+        margin: 0 40px;
+        transition: transform 0.2s;
+        
+        img {
+          width: 100%;
+          opacity: 0.2;
+        }
+      }
+
+      .card {
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: fit-content;
+        padding: 40px;
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        animation: slide 0.2s ease-in-out;
+        transition: margin-left 5s;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: -25px;
+            bottom: 25px;
+            right: -25px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            background-color: white;
+            z-index: -1;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+  
+        .message {
+          margin: 40px 0;
+          font-style: italic;
+          font-size: 20px;
+          color: rgb(101, 98, 98);
+          animation: fadeIn 0.5s ease-in-out;
+        }
+  
+        .info {
+          margin-top: 100px;
+          animation: fadeIn 0.5s ease-in-out;
+  
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+          }
+  
+          p {
+            color: rgba(7, 23, 29, 0.5);
+            font-size: 14px;
+            max-width: 420px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+  }
+
+  .logos-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 10px 0;
+    opacity: 0.2;
+    
+
+    div {
+      margin: 0 15px;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: auto;
+      }
+    }
+  }
+
+ 
+}
+
+@keyframes slide {
+  from {
+      margin-left: 100px;
+  }
+
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@media (min-width: 0) and (max-width: 1200px) {
+  .card {
+    width: 200px !important;
+  }
+
+}
+

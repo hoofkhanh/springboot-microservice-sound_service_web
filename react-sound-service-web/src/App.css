@@ -1,0 +1,140 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+:root {
+  --button-color: rgb(73, 184, 186);
+  --border-bottom: rgb(216, 202, 202);
+  --background-color: rgb(33, 41, 73);
+}
+
+main {
+  width: 100%;
+  max-width: 100vw;
+}
+
+.container-common {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.big-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 100;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+ 
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.show-more {
+  width: 100%;
+  padding: 10px 0;
+  background-color: white;
+  border: 1px solid rgb(205, 199, 199);
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.load {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin :50px 0;
+  border-bottom: 1px solid var(--border-bottom);
+  padding-bottom: 50px;
+  
+  a{
+    width: 70%;
+    text-align: center;
+    padding: 15px 20px;
+    background-color: rgb(238, 238, 238);
+    border: none;
+    border-radius: 5px;
+    color: rgba(7, 23, 29, 0.752);
+    font-weight: 500;
+    transition: filter 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+}
+
+.active-pagination {
+  color: black !important;
+  font-size: 20px !important;
+}
+
+.loadImageBig {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -490px;
+  background-color: rgba(7, 23, 29, 0.752);
+  z-index: 100;
+  
+  .remove {
+    color: white;
+    align-self: start;
+    margin-top: 300px;
+    cursor: pointer;
+  }
+
+  .loadImage {
+    color: white ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    height: 100%;
+    width: 100%;
+
+    img {
+      height: 80vh;
+      width: 80wh;
+      object-fit: cover;
+    }
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+

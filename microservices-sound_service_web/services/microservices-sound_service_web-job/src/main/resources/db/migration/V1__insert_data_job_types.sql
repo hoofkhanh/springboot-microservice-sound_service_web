@@ -1,0 +1,2 @@
+INSERT INTO job_types (id, name) VALUES (1, 'Producer'), (2, 'Female Singer'), (3, 'Male Singer'), (4, 'Mixing Engineer'),
+									(5, 'Songwriter'), (6, 'Beatmaker'), (7, 'Mastering Engineer'), (8, 'Ghost Writers'), (9, 'Session Musician'); 

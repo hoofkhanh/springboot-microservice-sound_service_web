@@ -1,0 +1,185 @@
+.container {
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+
+  .hero-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    margin-left: 130px;
+
+    h1 {
+      font-size: 64px;
+      padding: 15px 0;
+    }
+
+    h3 {
+      max-width: 400px;
+      padding: 15px 0;
+    }
+
+    .service {
+      padding: 40px 0;
+
+      a {
+        text-decoration: none;
+        padding: 25px 25px;
+        border-radius: 5px;
+        margin-right: 10px;
+        color: white;
+        font-weight: 600;
+      }
+
+      .find-to-pro {
+        background-color: var(--button-color);
+        border: none;
+      }
+
+      .post-job {
+        border: 1px solid  var(--button-color);
+      }
+    }
+
+    .button-play-video {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin: 10px 0;
+      width: fit-content;
+
+      button {
+        border-radius: 25px;
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+        border: none;
+        transition: transform 0.25s;
+        cursor: pointer;
+      }
+
+      img {
+        width: 15px;
+        height: 20px;
+        object-fit: cover;
+        vertical-align: middle;
+      }
+
+      span{
+        color: rgba(255, 255, 255, 0.63);
+        transition: color 0.25s;
+      }
+
+      &:hover button {
+        transform: scale(1.1);
+      }
+
+      &:hover span {
+        color: white;
+      }
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      height: 1000px;
+      background-color: rgb(27, 26, 26);
+      right: 0;
+      left: -790px;
+      bottom: 0;
+      top: 0;
+      transform: skewY(-80deg);
+      -webkit-transform: skewY(-80deg);
+      -moz-transform: skewY(-80deg);
+      -ms-transform: skewY(-80deg);
+    }
+  }
+
+  .video-div {
+    position: fixed;
+    bottom: 30%;
+    left: 30%;
+    animation: fadeIn 1.5s;
+    z-index: 10;
+
+    .screen-video {
+      position: relative;
+
+      button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.61);
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        transition: color 0.2s;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+    video {
+      width: 600px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 0) and (max-width: 1200px) {
+  .hero-info {
+    display: none;
+    
+    h1 {
+      font-size: 30px !important;
+      margin-top: 140px;
+    }
+
+    h3 {
+      font-size: 15px !important;
+    }
+
+    .service {
+      display: flex;
+      flex-direction: column;
+      a {
+        width: 130px;
+        font-size: 13px;
+      }
+    }
+
+    .button-play-video {
+      display: none !important;
+    }
+  }
+}

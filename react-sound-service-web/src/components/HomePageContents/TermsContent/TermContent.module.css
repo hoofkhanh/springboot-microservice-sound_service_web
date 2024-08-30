@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  
+
+  .big-container-term {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    margin: 0 70px;
+    
+    h1 {
+      text-align: center;
+      font-size: 45px;
+      margin: 100px 0;
+    }
+
+    .terms {
+      ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 50px;
+        gap: 20px;
+        
+        list-style: none;
+      }
+  
+      .container-term {
+        display: flex;
+        justify-content: center;
+        line-height: 22px;
+
+        h3 {
+          margin-bottom: 10px;
+        }
+
+        p {
+          color: rgba(7, 23, 29, 0.8);
+        }
+  
+        .term-image {
+          margin-right: 20px;
+          
+          img {
+            width: 40px;
+            object-fit: cover;
+          }
+
+          
+        }
+  
+      
+      }
+    }
+  }
+
+  .avartar {
+    flex: 1;
+    position: relative;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: white;
+      right: -75px;
+      bottom: 0;
+      top: 0;
+      width: 160px;
+      transform: skewX(10deg);
+      /* -webkit-transform: skewY(80deg);
+      -moz-transform: skewY(80deg);
+      -ms-transform: skewY(80deg);  */
+    }
+  }
+
+  
+}
+
+@media (min-width: 0) and (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+
+    .avartar {
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+        background-color: white;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        width: 0;
+        transform: skewX(0);
+        /* -webkit-transform: skewY(80deg);
+        -moz-transform: skewY(80deg);
+        -ms-transform: skewY(80deg);  */
+      }
+    }
+
+    .big-container-term {
+      width: 100%;
+     
+      text-align: center !important;
+      margin-left: 0 !important;
+      justify-content: start !important;
+
+      ul {
+        padding: 20px !important;
+      }
+    }
+  }
+  
+  
+
+}

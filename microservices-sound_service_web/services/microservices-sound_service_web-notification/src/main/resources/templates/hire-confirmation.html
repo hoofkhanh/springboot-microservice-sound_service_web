@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .invoice-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .invoice-box h2 {
+            margin: 0 0 20px;
+            text-align: center;
+        }
+
+        .invoice-header,
+        .invoice-body,
+        .invoice-footer {
+            margin-bottom: 20px;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .invoice-header .invoice-info,
+        .invoice-header .company-info {
+            width: 45%;
+        }
+
+        .invoice-header p {
+            margin: 5px 0;
+        }
+
+        .invoice-body h3 {
+            margin: 0 0 10px;
+        }
+
+        .invoice-body p {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+        }
+
+        tfoot {
+            font-weight: bold;
+        }
+
+        tfoot td {
+            border: none;
+        }
+
+        tfoot .text-right {
+            text-align: right;
+        }
+
+        .invoice-footer {
+            text-align: center;
+        }
+
+        .invoice-footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <h2>Hire Confirmation</h2>
+        <div class="invoice-header">
+            <div class="invoice-info">
+                <p><strong>Start Date:</strong> <span th:text="${startDate}"></span></p>
+                <p><strong>End Date:</strong> <span th:text="${endDate}"></span></p>
+            </div>
+            <div class="company-info">
+                <p><strong>Hirer</strong></p>
+				<p th:text="${hirer.user.email}"></p>
+                <p th:text="${hirer.user.fullName}"></p>
+                <p th:text="${hirer.user.country}"></p>
+                <p th:text="${hirer.user.role}"></p>
+            </div>
+        </div>
+        <div class="invoice-body">
+            <h3>Expert</h3>
+			<p><strong>Email:</strong> <span th:text="${expert.user.email}"></span></p>
+            <p><strong>Name:</strong> <span th:text="${expert.artistName}"></span></p>
+            <p><strong>Country:</strong> <span th:text="${expert.user.country}"> </span></p>
+            <p><strong>Role:</strong> <span th:text="${expert.user.role + ', ' + expert.artistType}"></span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>StartDate</th>
+                        <th>End Date</th>
+                        <th>Price</th>
+						<th th:if="${jobType != null}">Job Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td th:text="${startDate}"></td>
+                        <td th:text="${endDate}"></td>
+                        <td th:text="${price}"></td>
+						<td th:if="${jobType != null}" th:text="${jobType.name}"></td>
+                    </tr>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Total</strong></td>
+                        <td th:text="${price}"></td>
+                    </tr>
+                </tfoot>
+            </table>
+			
+			<div >
+				<form th:if="${payment != null && jobType != null}"
+					 method="post" th:action="@{'http://localhost:8222/api/payments/sound-maker-hire-payment'}">
+					Thanh toán:
+					<input type="hidden" name="hirerId" th:value="${hirer.id}">
+					<input type="hidden" name="expertId" th:value="${expert.id}">
+					<input type="hidden" name="jobTypeId" th:value="${jobType.id}">
+					<input type="hidden" name="startDate" th:value="${startDate}">
+					<input type="hidden" name="endDate" th:value="${endDate}">
+				    <select name="paymentMethod">
+						<option value="CASH">CASH</option>
+						<option value="CREDIT_CARD">CREDIT_CARD</option>
+						<option value="ELECTRONIC_WALLET">ELECTRONIC_WALLET</option>
+					</select>
+					<button type="submit">Thanh toán</button>
+				</form>
+				
+				<form th:if="${payment != null && jobType == null}"
+					 method="post" th:action="@{'http://localhost:8222/api/payments/sound-checker-hire-payment'}">
+					Thanh toán:
+					<input type="hidden" name="hirerId" th:value="${hirer.id}">
+					<input type="hidden" name="expertId" th:value="${expert.id}">
+					<input type="hidden" name="startDate" th:value="${startDate}">
+					<input type="hidden" name="endDate" th:value="${endDate}">
+				    <select name="paymentMethod">
+						<option value="CASH">CASH</option>
+						<option value="CREDIT_CARD">CREDIT_CARD</option>
+						<option value="ELECTRONIC_WALLET">ELECTRONIC_WALLET</option>
+					</select>
+					<button type="submit">Thanh toán</button>
+				</form>
+				
+				
+				<form th:if="${hire != null && jobType != null}"
+					 method="post" th:action="@{'http://localhost:8222/api/hires/confirm-sound-maker-hire-in-mail-of-hirer'}">
+					Xác nhận:
+					<input type="hidden" name="hirerId" th:value="${hirer.id}">
+					<input type="hidden" name="expertId" th:value="${expert.id}">
+					<input type="hidden" name="jobTypeId" th:value="${jobType.id}">
+					<input type="hidden" name="startDate" th:value="${startDate}">
+					<input type="hidden" name="endDate" th:value="${endDate}">
+					<button type="submit">Đồng ý</button>
+				</form>
+				
+				<form th:if="${hire != null && jobType == null}"
+					 method="post" th:action="@{'http://localhost:8222/api/hires/confirm-sound-checker-hire-in-mail-of-hirer'}">
+					Xác nhận:
+					<input type="hidden" name="hirerId" th:value="${hirer.id}">
+					<input type="hidden" name="expertId" th:value="${expert.id}">
+					<input type="hidden" name="startDate" th:value="${startDate}">
+					<input type="hidden" name="endDate" th:value="${endDate}">
+					<button type="submit">Đồng ý</button>
+				</form>
+				
+			</div>
+			
+        </div>
+        <div class="invoice-footer">
+            <p>Thank you for your payment!</p>
+            <p>If you have any questions, feel free to contact us at <a href="mailto:support@company.com">hoofkhanh@company.com</a>.</p>
+        </div>
+    </div>
+	
+	
+</body>
+</html>

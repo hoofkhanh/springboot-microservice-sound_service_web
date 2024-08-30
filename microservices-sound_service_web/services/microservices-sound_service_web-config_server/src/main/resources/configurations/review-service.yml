@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5431/review
+    username: hoofkhanh
+    password: hoofkhanh
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8010
+  
+application:
+  config:
+    customer-url: http://localhost:8222/api/customers
+    hire-url: http://localhost:8222/api/hires
+    artist-url: http://localhost:8222/api/artists

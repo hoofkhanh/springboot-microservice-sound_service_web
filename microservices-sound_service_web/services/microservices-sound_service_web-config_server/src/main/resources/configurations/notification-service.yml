@@ -1,0 +1,46 @@
+spring:
+  data:
+    mongodb:
+      username: hoofkhanh
+      password: hoofkhanh
+      host: localhost
+      port: 27016
+      database: notification
+      authentication-database: admin
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: purchasedBeatGroup, paymentGroup, hireGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+        spring.json.type.mapping: temporaryPurchasedBeatConfirmation:com.hokhanh.web.kafka.purchasedBeat.TemporaryPurchasedBeatConfirmation,
+         successfulPaymentNotification:com.hokhanh.web.kafka.payment.SuccessfulPaymentNotification,
+         hireConfirmation:com.hokhanh.web.kafka.hire.HireConfirmation
+  mail:
+    host: localhost
+    port: 1025
+    username: hoofkhanh
+    password: hoofkhanh
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          
+server:
+  port: 8040
+  
+application:
+  config:
+    customer-url: http://localhost:8222/api/customers
+    beat-url: http://localhost:8222/api/beats
+    artist-url: http://localhost:8222/api/artists
+    job-url: http://localhost:8222/api/jobs

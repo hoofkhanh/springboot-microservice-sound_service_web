@@ -1,0 +1,155 @@
+.soundCheck {
+
+  .container-input {
+    padding: 0 161px;
+    border-bottom: 2px solid var(--border-bottom);
+  }
+
+  .input-search {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-bottom);
+
+    input {
+      padding: 13px 30px;
+    }
+
+    img {
+      position: absolute;
+      width: 20px;
+      object-fit: contain;
+      right: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 100px;
+    padding-bottom: 20px;
+
+    .card {
+      box-shadow: 0px 1px 5px 0px  rgba(33, 41, 73, 0.2) ;
+      border-radius: 5px;
+
+      .avatar {
+        width: 100%;
+        height: 200px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+
+        }
+      }
+
+      .card-info {
+
+        padding: 20px;
+
+      
+        a {
+          color: black;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        h3, .country, .reviews, .introduction {
+          margin: 10px 0;
+        }
+
+        .introduction {
+          font-size: 14px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
+        .country {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          a {
+            font-size: 14px;
+            text-decoration: none;
+            color: gray;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          span {
+            font-size: 14px;
+            text-decoration: none;
+            color: gray;
+          }
+  
+          .favorite {
+            width: 20px;
+            height: 20px;
+            position: relative;
+    
+            img {
+              width: 100%;
+              height: 100%;
+              cursor: pointer;
+            }
+
+            &:hover span{
+              opacity: 1;
+            }
+
+            span {
+              top: -15px;
+              left: 30px;
+              position: absolute;
+              /* opacity: 0; */
+              pointer-events: none;
+              width: 150px;
+              background-color: black;
+              color: white;
+              padding: 15px 25px;
+              border-radius: 5px;
+              opacity: 0;
+              transition: opacity 0.2s;
+            }
+          }
+        }
+  
+        .reviews {
+          color: gray;
+          font-size: 14px;
+
+          span {
+            margin-left: 5px;
+          }
+
+          img {
+            width: 16px;
+            margin: 0 3px;
+          }
+        }
+      }
+
+      
+    }
+  }  
+}
+
+@media (min-width: 0) and (max-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+} 

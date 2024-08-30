@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5431/purchased_beat
+    username: hoofkhanh
+    password: hoofkhanh
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: temporaryPurchasedBeatConfirmation:com.hokhanh.web.kafka.TemporaryPurchasedBeatConfirmation
+
+server:
+  port: 8006
+  
+application:
+  config:
+    customer-url: http://localhost:8222/api/customers
+    artist-url: http://localhost:8222/api/artists
+    beat-url: http://localhost:8222/api/beats
